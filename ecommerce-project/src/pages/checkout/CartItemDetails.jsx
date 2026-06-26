@@ -41,7 +41,16 @@ export function CartItemDetails({ cartItem, loadCart }) {
              <input type='text' className='input-quantity' value={quantity} 
               onChange={(event) => {
                 setQuantity(event.target.value)
+              }}
+              onKeyDown={(event) => {
+               if(event.key === 'Enter') {
+                updateQuantity()
+               } else if(event.key === 'Escape') {
+                setQuantity(cartItem.quantity);
+                isupdatingQuantity(false)
+               }
               }}/> :
+
              <span className="quantity-label">{cartItem.quantity}</span>
             }
            
